@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="padded">
+	<div class="row">
+		<div class="col-lg-4 col-md-4 col-sm-12">
+			<table class="table table-bordered">
+				<!--Add margin and padding on all sides-->
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Rating scale</th>
+						<th scope="col">Number of votes</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for k1,v1 in rating_category.items() %}
+					<tr>
+						<td class="table-primary">{{ k1 }}</td>
+						<td class="table-warning">{{ v1 }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<h1 class="display-4">CAST</h1>
+			<p class="font-italic">
+				{% for i in cast: %}
+				<a href="{{ url_for('actor', person_id = i.personID  ) }}"> {{ i }} </a>	
+				{% endfor %}
+			</p>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-12">
+			<table class="table table-bordered">
+				<!--Add margin and padding on all sides-->
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Categories of users</th>
+						<th scope="col">Number of votes</th>
+						<th scope="col">Rating by the category</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for k1,v1 in all_ratings.items() %}
+					<tr>
+						<td class="table-primary">{{ k1.upper() }}</td>
+						<td class="table-secondary">{{ v1['votes'] }}</td>
+						<td class="table-warning">{{ v1['rating'] }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+<div class="padded">
+	<div class="row">
+		<div class="col-lg-4 col-md-4 col-sm-12">
+			<!-- <img class="d-block w-100" src="{{ poster }}" alt="Movie-Poster"> -->
+			<img src="{{ poster }}" class="img-fluid">
+
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-12 desc">
+			<h1 class="display-4">PLOT</h1>
+			<p class="font-weight-bold">
+				{% for i in plot %}
+				<br> {{ i }} </br>
+				{% endfor %}
+
+			</p>
+		</div>
+	</div>
+</div>
+{% endblock %}

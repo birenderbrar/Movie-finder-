@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="padded">
+	<form style="text-align: center;" method="POST" action="{{ url_for('index') }}">
+		<input type="text" name="movie" placeholder="Enter the movie name">
+		<input type="submit">
+	</form>
+</div>
+
+
+<div class="padded">
+	<table class="table">
+		<!--Add margin and padding on all sides-->
+		<!--Disable the header-->
+		<thead class="thead-dark">  <!--PUT A IF CONDITION SO PAGE SHOWS BLANK NOT THE TABLE HEADER-->
+			<tr>
+				<th scope="col">Title</th>
+				<th scope="col">Type</th>
+				<th scope="col">Year</th>
+				<th scope="col">Poster</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for i in content %}
+			<tr class="table-primary">
+				<td><a href="{{ url_for('results', id = i.id  ) }}"> {{ i.title }} </a></td>
+				<td>{{ i.type }}</td>
+				<td>{{ i.year }}</td>
+				<td><img src="{{ i.poster }}" id="test" class="rounded float-centre"></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}

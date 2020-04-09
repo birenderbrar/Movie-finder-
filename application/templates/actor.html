@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="padded">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <img src="{{ person_details['full-size headshot'] }}" class="img-fluid"alt="Headshot of actor">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <h1 class="display-4">{{ person_details['name'] }}</h1>
+            <p>DOB: {{ person_details['birth date'] }}</p>
+            <p>birth place : {{ person_details['birth notes'] }}</p>
+            
+            {% for i,k in dob.items() %} <!--Sinvce we have just one key and value , how to access it without for loop-->
+            <p>{{ i }}:: {{ k }}</p>
+            {% endfor %}
+        
+        </div>
+    </div>
+</div>
+
+{% endblock %}
