@@ -1,19 +1,57 @@
 {% extends "layout.html" %}
 {% block body %}
+
 <div class="padded">
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <img src="{{ person_details['full-size headshot'] }}" class="img-fluid"alt="Headshot of actor">
+        <div class="col-md-6 col-sm-12">
+            <div class="card h-100">
+                <img src="{{ person_details['full-size headshot'] }}" class="img-fluid" alt="Headshot of actor">
+            </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <h1 class="display-4">{{ person_details['name'] }}</h1>
-            <p>DOB: {{ person_details['birth date'] }}</p>
-            <p>birth place : {{ person_details['birth notes'] }}</p>
-            
-            {% for i,k in dob.items() %} <!--Sinvce we have just one key and value , how to access it without for loop-->
-            <p>{{ i }}:: {{ k }}</p>
+        <div class="col-md-6 col-sm-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="alert alert-info" role="alert">
+                        <h1 class="display-3">{{ person_details['name'] }}</h1>
+                        <p>{{ person_details['birth date'] }}</p>
+                        <p>{{ person_details['birth notes'] }}</p>
+                        {% for i in spouse %}
+                        <p>{{ i|replace("::", " ") }}</p>
+                        {% endfor %}
+                    </div>
+                    <h4>Movies</h4>
+                    <div class="alert alert-success" role="alert">
+                        <p>
+                            {% for i in film3 %}
+                            <span class="badge badge-light">{{ i|replace("()", "") }}</span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="padded">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4">Biography</h1>
+            {% for i in biography %}
+            <div class="alert alert-dark" role="alert">
+                {{ i }}
+            </div>
             {% endfor %}
-        
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4">Facts</h1>
+            <ul class="list-group">
+                {% for i in trivia %}
+                <li class="list-group-item list-group-item-info"> <span
+                        class="badge badge-secondary">{{ loop.index }}</span> {{ i }}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>

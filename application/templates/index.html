@@ -7,30 +7,23 @@
 		<input type="submit">
 	</form>
 </div>
-
-
-<div class="padded">
-	<table class="table">
-		<!--Add margin and padding on all sides-->
-		<!--Disable the header-->
-		<thead class="thead-dark">  <!--PUT A IF CONDITION SO PAGE SHOWS BLANK NOT THE TABLE HEADER-->
-			<tr>
-				<th scope="col">Title</th>
-				<th scope="col">Type</th>
-				<th scope="col">Year</th>
-				<th scope="col">Poster</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for i in content %}
-			<tr class="table-primary">
-				<td><a href="{{ url_for('results', id = i.id  ) }}"> {{ i.title }} </a></td>
-				<td>{{ i.type }}</td>
-				<td>{{ i.year }}</td>
-				<td><img src="{{ i.poster }}" id="test" class="rounded float-centre"></td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+<br></br>
+<div class="container">
+	<div class="row">
+		{% for i in content %}
+		<div class="col-md-3 col-sm-6">
+			<div class="card h-100" style="width: auto;">
+				<img class="card-img-top" src="{{ i.poster }}" alt="Movie poster">
+				<div class="card-body">
+					<h5 class="card-title"><a href="{{ url_for('results', id = i.id  ) }}"> {{ i.title }} </a></h5>
+					<p class="card-text">{{ i.type.upper() }}</p>
+					<p class="card-text">{{ i.year }}</p>
+					<a href="{{ url_for('results', id = i.id  ) }}"> find details </a></a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
 </div>
+
 {% endblock %}

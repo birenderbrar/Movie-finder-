@@ -4,8 +4,7 @@
 <div class="padded">
 	<div class="row">
 		<div class="col-lg-4 col-md-4 col-sm-12">
-			<table class="table table-bordered">
-				<!--Add margin and padding on all sides-->
+			<table class="table table-bordered h-100">
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">Rating scale</th>
@@ -21,16 +20,9 @@
 					{% endfor %}
 				</tbody>
 			</table>
-			<h1 class="display-4">CAST</h1>
-			<p class="font-italic">
-				{% for i in cast: %}
-				<a href="{{ url_for('actor', person_id = i.personID  ) }}"> {{ i }} </a>	
-				{% endfor %}
-			</p>
 		</div>
 		<div class="col-lg-8 col-md-8 col-sm-12">
-			<table class="table table-bordered">
-				<!--Add margin and padding on all sides-->
+			<table class="table table-bordered h-100">
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">Categories of users</th>
@@ -51,20 +43,31 @@
 		</div>
 	</div>
 </div>
-
-
 <div class="padded">
 	<div class="row">
-		<div class="col-lg-4 col-md-4 col-sm-12">
-			<!-- <img class="d-block w-100" src="{{ poster }}" alt="Movie-Poster"> -->
+		<div class="col-lg-4 col-md-12">
 			<img src="{{ poster }}" class="img-fluid">
-
 		</div>
-		<div class="col-lg-8 col-md-8 col-sm-12 desc">
-			<h1 class="display-4">PLOT</h1>
+		<div class="col-lg-8 col-md-12">
+			<div class="card bg-light h-100">
+				<div class="card-header">Star Cast</div>
+				<div class="card-body">
+					<p class="card-text"> {% for i in cast: %}
+						<span class="badge badge-light"><a href="{{ url_for('actor', person_id = i.personID  ) }}"> {{ i }}</a></span>
+						{% endfor %}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="padded">
+	<div class="row">
+		<div class="col">
+			<h1 class="display-4">Plot</h1>
 			<p class="font-weight-bold">
 				{% for i in plot %}
-				<br> {{ i }} </br>
+				<li class="list-group-item list-group-item-info"> <span
+						class="badge badge-secondary">{{ loop.index }}</span> {{ i }}</li>
 				{% endfor %}
 
 			</p>

@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -12,17 +11,17 @@
     </script>
     <link rel="stylesheet" href="/static/CSS/main.css">
     <title>IMDB Movie Finder</title>
-    <!-- Bootstrap CSS -->
-
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url_for('index') }}" id="heading">IMDB Movie Finder</a>
-        <img src="/static/images/nav-tag.png" width="300" height="100" class="d-inline-block align-top">
-        </a>
-    </nav>
+    <div class="padded">
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{ url_for('index') }}" id="heading">HOME</a>
+            <img src="/static/images/nav-tag.png" width="300" height="100" class="d-inline-block align-top">
+            </a>
+        </nav>
+    </div>
+
     {% block body %}
     {% endblock %}
 </body>
